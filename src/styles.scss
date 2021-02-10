@@ -1,1 +1,167 @@
-/* You can add global styles to this file, and also import other style files */
+$color-dark: #484E59;
+$color-darker: #343943;
+$color-darkest: #2C2F36;
+$color-grey: #7E8792;
+$color-grey-lighter: #B9BDC4;
+$color-grey-lightest: #CDD2DA;
+$color-accent: #4EA7FA;
+$color-primary: #F4C54D;
+$color-gradient: linear-gradient(90deg, #F2CD4B 0%, #F174BF 22.92%, #4C54FF 70%, #6CD3FF 100%);
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+  font-size: 19px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 34px;
+}
+
+small {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+body {
+  min-height: 100vh;
+  background: $color-darkest;
+  color: $color-grey-lightest;
+}
+
+p {
+  margin: 16px 0;
+}
+
+.header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__toolbar {
+    display: inline-flex;
+    align-items: center;
+    color: $color-grey;
+  }
+
+  &__back {
+    margin-left: 15px;
+  }
+}
+
+.toolbar {
+  &__icon + &__icon {
+    margin-left: 25px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  // width: 24px;
+  // height: 24px;
+
+  & > svg {
+    // height: 100%;
+    // width: 100%;
+  }
+
+  &--mandatory {
+    position: relative;
+
+    &::before {
+      display: block;
+      content: '*';
+      color: $color-primary;
+      position: absolute;
+      right: 0;
+      top: 0px;
+      z-index: 1;
+      transform: translate(6px, -7px);
+    }
+  }
+}
+
+button.icon {
+  border: none;
+  outline: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.mute {
+  color: $color-grey;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+// .guide {
+//   &__intro {
+//     margin-right: 300px;
+//   }
+// }
+
+@media screen and (min-width: 1025px) {
+  .guide {
+    &__intro {
+      margin-right: 300px;
+    }
+  }
+}
+
+.guide__features {
+  list-style-type: none;
+  margin: 0 -15px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.feature {
+  display: inline-flex;
+  width: 50%;
+  align-items: center;
+  margin: 15px 0;
+  padding: 0 15px;
+
+  &__icon {
+    width: 30px;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  &__dash {
+    margin: 0 15px;
+  }
+
+  &__description {}
+}
