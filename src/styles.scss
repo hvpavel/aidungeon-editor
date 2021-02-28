@@ -6,7 +6,19 @@ $color-grey-lighter: #B9BDC4;
 $color-grey-lightest: #CDD2DA;
 $color-accent: #4EA7FA;
 $color-primary: #F4C54D;
-$color-gradient: linear-gradient(90deg, #F2CD4B 0%, #F174BF 22.92%, #4C54FF 70%, #6CD3FF 100%);
+$color-gradient: linear-gradient(90deg,#F2CD4B 0%, #F174BF 22.92%, #4C54FF 70%, #6CD3FF 100%);
+
+@keyframes live-background {
+  0%{background-position:0% 51%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 51%}
+}
+
+.glowing {
+  background: $color-gradient;
+  background-size: 800% 800%;
+  animation: live-background 4s linear infinite;
+}
 
 * {
   box-sizing: border-box;
@@ -55,6 +67,15 @@ p {
   margin: 16px 0;
 }
 
+.ref {
+  color: $color-accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .header {
   padding: 20px;
   display: flex;
@@ -78,30 +99,22 @@ p {
   }
 }
 
+.mandatory {
+  position: relative;
+  font-weight: bold;
+
+  &::after {
+    content: '*';
+    color: $color-primary;
+    // position: absolute;
+    // right: 0;
+    // top: 0px;
+    // z-index: 1;
+  }
+}
+
 .icon {
   display: inline-block;
-  // width: 24px;
-  // height: 24px;
-
-  & > svg {
-    // height: 100%;
-    // width: 100%;
-  }
-
-  &--mandatory {
-    position: relative;
-
-    &::before {
-      display: block;
-      content: '*';
-      color: $color-primary;
-      position: absolute;
-      right: 0;
-      top: 0px;
-      z-index: 1;
-      transform: translate(6px, -7px);
-    }
-  }
 }
 
 button.icon {
@@ -164,4 +177,72 @@ button.icon {
   }
 
   &__description {}
+}
+
+.tabs {
+  $border-width: 2px;
+
+  margin: 0;
+  padding: 0;
+  display: flex;
+  border-bottom: $border-width solid $color-dark;
+
+  &__tab {
+    display: inline-block;
+    margin-top: $border-width;
+
+    &:hover {
+      margin-top: 0;
+      margin-bottom: -$border-width;
+    }
+  }
+
+  &__tab + &__tab {
+    margin-left: 3px;
+  }
+}
+
+.tab {
+  $border-width: 3px;
+
+  background-color: $color-darker;
+  font-size: 14px;
+  border-radius: 3px 3px 0 0;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: content-box;
+  position: relative;
+
+  &,
+  &::after {
+    transition: .3s ease all;
+  }
+
+  &__content {
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 10px 15px;
+  }
+
+  &--selected {
+    background-color: $color-dark;
+    color: $color-primary;
+  }
+
+  &::after {
+    @extend .glowing;
+
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 0;
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+  }
+
+  &:hover::after {
+    height: $border-width;
+  }
 }
