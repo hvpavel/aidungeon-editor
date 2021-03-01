@@ -1,3 +1,5 @@
+@import "./assets/icons/css/icons-all-codes";
+
 $color-dark: #484E59;
 $color-darker: #343943;
 $color-darkest: #2C2F36;
@@ -7,6 +9,47 @@ $color-grey-lightest: #CDD2DA;
 $color-accent: #4EA7FA;
 $color-primary: #F4C54D;
 $color-gradient: linear-gradient(90deg,#F2CD4B 0%, #F174BF 22.92%, #4C54FF 70%, #6CD3FF 100%);
+
+@font-face {
+  font-family: 'icons-all';
+  src: url('./assets/icons/font/icons-all.eot?73690718');
+  src: url('./assets/icons/font/icons-all.eot?73690718#iefix') format('embedded-opentype'),
+       url('./assets/icons/font/icons-all.woff2?73690718') format('woff2'),
+       url('./assets/icons/font/icons-all.woff?73690718') format('woff'),
+       url('./assets/icons/font/icons-all.ttf?73690718') format('truetype'),
+       url('./assets/icons/font/icons-all.svg?73690718#icons-all') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-size: 24px;
+}
+ 
+[class^="icon-"]::before, [class*=" icon-"]::before {
+  font-family: "icons-all";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+}
 
 @keyframes live-background {
   0%{background-position:0% 51%}
@@ -94,6 +137,8 @@ p {
 }
 
 .toolbar {
+  color: $color-grey-lighter;
+
   &__icon + &__icon {
     margin-left: 25px;
   }
@@ -245,4 +290,16 @@ button.icon {
   &:hover::after {
     height: $border-width;
   }
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-270 {
+  transform: rotate(270deg);
 }
